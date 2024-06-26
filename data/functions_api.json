@@ -1,0 +1,74 @@
+[{
+  "name": "checkphish_url_scan",
+  "description": "CheckPhish.ai scans URL for phishing and scam. If it is malicious, CheckPhish API will return Brand, Disposition, Scan Time",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "str"
+      },
+      "proxy_location": {
+        "type": "str"
+      },
+      "user_agent": {
+        "type": "str"
+      }
+    }
+  },
+  "returns": "URLScanResults"
+},
+{
+  "name": "urlscanio_url_scan",
+  "description": "URLScanIO scans URL for phishing and scam. If it is malicious, CheckPhish API will return Brand, Disposition,\n    Scan Time",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "str"
+      },
+      "proxy_location": {
+        "type": "str"
+      },
+      "user_agent": {
+        "type": "str"
+      }
+    }
+  },
+  "returns": "URLScanResults"
+},
+{
+  "name": "virustotal_file_Scan",
+  "description": "Virustotal file scanner scans files in multiple antivirus sandboxes to check if the file is malicious.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "file_path": {
+        "type": "str"
+      }
+    }
+  },
+  "returns": "FileScanResults"
+},
+{
+  "name": "send_takedown_notice",
+  "description": "send a takedown notice to the hosting provider or a registry to report malicious URL for takedown.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "str"
+      },
+      "abuse_contact": {
+        "type": "str"
+      },
+      "msg_content": {
+        "type": "str"
+      },
+      "brand": {
+        "type": "str"
+      }
+    }
+  },
+  "returns": "TakedownNoticeResults"
+}
+]

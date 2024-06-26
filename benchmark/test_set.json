@@ -1,0 +1,15 @@
+{
+  "Scan URL https://abc.com/1234_paypal.html": [
+    "checkphish_url_scan",
+    "urlscanio_url_scan"
+  ],
+  "check if file abc_adobe.exe is ransomware": ["virustotal_file_Scan"],
+  "Scan URL https://apple-free-ipod.com with all scanners": [
+    "checkphish_url_scan",
+    "urlscanio_url_scan"
+  ],
+  "scan URL https://abc-chase.tk/free_account.php and then send a takedown notice": [
+    "checkphish_url_scan",
+    "send_takedown_notice"
+  ]
+}
