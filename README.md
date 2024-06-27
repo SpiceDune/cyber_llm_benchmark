@@ -1,6 +1,3 @@
-Here's an even more visually appealing version of the `README.md` with more emojis, visual separators, and enhanced formatting:
-
----
 
 # 🛡️ Cyber LLM Benchmark
 
