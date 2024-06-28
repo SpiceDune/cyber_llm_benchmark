@@ -48,18 +48,17 @@ To get started with the Cyber LLM Benchmark, follow these steps:
    ```bash
    pip install -r requirements.txt
    ```
----
-
+   
 3. **Make sure Ollama is installed**
 
 You can read instructions to install ollama [here](https://ollama.com/download) 
 
-Once Ollama is installed  Install following models by executing
+Once ollama is installed  Install following models by executing
 
-```bash
+   ```bash
    ollama run llama3
    ollama run mistral
-```
+   ```
 
 ---
 

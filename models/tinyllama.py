@@ -8,7 +8,7 @@ from typing import get_type_hints
 
 class Model:
     def __init__(self):
-        self.model_name = "llama3"
+        self.model_name = "tinyllama"
         self.model_type = "local"
 
     def cleanup_response(self, response: dict[str, str]) -> str:
@@ -34,7 +34,7 @@ class Model:
                 data=json.dumps(params),
                 timeout=60,
             )
-            # print(f"🤖 Request: {json.dumps(params)} -> Response: {response.text}"
+            print(f"🤖 Request: {json.dumps(params)} -> Response: {response.text}")
             response.raise_for_status()
             return json.loads(response.text)
         except requests.RequestException as err:
