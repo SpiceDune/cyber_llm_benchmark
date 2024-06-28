@@ -2,6 +2,7 @@ import sys
 import json
 import rich
 import logging
+import time
 from rich.console import Console
 from rich.table import Table
 from rich.console import Console
@@ -49,23 +50,29 @@ class Benchmark:
     def display_results(self):
         table = Table(title="\n Cyber LLM Leaderboard")
         table.add_column("Model Name", style="magenta")
-        table.add_column("Score", justify="right", style="green")
+        table.add_column("Accuracy", justify="right", style="green")
+        table.add_column("Latency (Seconds)", justify="right", style="yellow")
         for item in self.model_benchmarks:
-            table.add_row(item, str(self.model_benchmarks[item]))
+            model_performance = self.model_benchmarks[item]
+            table.add_row(item, str(model_performance["accuracy"]), str(model_performance["latency"]))
         console = Console()
         console.print(table)
 
     def run_tests(self, model) -> None:
         final_score = 0
         console = Console()
-
+        total_latency = 0.0
         for prompt in self.prompts:
             with console.status(
                     f"Testing prompt [bold][yellow] {prompt}[/yellow][/bold]", spinner="earth"
             ):
+                start = time.time()
                 result = model.process(prompt)
+                end = time.time()
                 final_score += self.test_case(prompt, result)
+                total_latency += end - start
             console.print("test completed! :sunglasses:")
-        accuracy = (final_score/self.max_score)*100
-        self.model_benchmarks[model.model_name] = accuracy
-        rich.print(f"[blue]{model.model_name}: {accuracy}% [blue]")
+        accuracy = round((final_score/self.max_score)*100,1)
+        average_latency = round(total_latency / len(self.prompts),1)
+        self.model_benchmarks[model.model_name] = {"accuracy": accuracy, "latency": average_latency}
+        rich.print(f"[blue]{model.model_name} -  accuracy: {accuracy}% latency: {average_latency}s [blue]")
